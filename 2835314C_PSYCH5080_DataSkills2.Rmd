@@ -1,0 +1,191 @@
+---
+title: "PSYCH5080 Data Skills Assignment 2"
+author: "School of Psychology and Neuroscience"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+## DO NOT DELETE THIS CHUNK OR ALTER ANY OF THE LINES WITHIN THIS CHUNK!
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+# Start of the Assignment 
+
+
+### Task 1: Load the Libraries
+
+```{r TR901, message = FALSE, warning = FALSE}
+
+
+library(broom)
+library(tidyverse)
+
+
+```
+
+
+
+### Task 2: The Data
+
+```{r TR902, message = FALSE, warning = FALSE}
+
+
+
+dat_can <- read_csv("Birt_data_complete.csv")
+
+dat_uk <- read_csv("Shanks_data_complete.csv")
+
+
+
+```
+
+
+
+### Task 3: Wrangling 1
+
+```{r TR903}
+
+
+
+dat_can_rdc <- dat_can %>% 
+  select(CODED, LANGUAGE, COUNTRY, CORRECT_PCT) %>% 
+  filter(LANGUAGE == "ENGLISH")
+
+
+
+```
+
+
+
+### Task 4 - Creating Factors
+
+```{r TR904}
+
+
+
+dat_can_mut <- dat_can_rdc %>%
+  mutate(CODED = factor(CODED))
+
+
+
+```
+
+
+
+### Task 5 - The UK Dataset
+
+```{r TR905}
+
+
+
+dat_uk_mut <-   dat_uk %>% 
+  select(CODED, LANGUAGE, COUNTRY, CORRECT_PCT) %>% 
+  mutate(CODED = factor(CODED))%>% 
+   filter(LANGUAGE == "ENGLISH") 
+
+
+
+```
+
+
+
+### Task 6: Combine the data
+
+```{r TR906}
+
+
+
+combined_data <- bind_rows(dat_can_mut, dat_uk_mut)
+
+
+
+
+```
+
+
+
+### Task 7 - Selecting columns
+
+```{r TR907}
+
+
+
+combined_data_rdc <- combined_data %>% 
+  select(CODED, COUNTRY, CORRECT_PCT)
+
+
+
+```
+
+
+
+### Task 8 - Visualisation
+
+```{r TR908}
+
+
+ggplot(combined_data_rdc, aes(CODED, CORRECT_PCT, fill = COUNTRY)) + 
+  geom_violin() + 
+  geom_boxplot() + 
+  scale_x_discrete(name = "Condition", labels = c("Hooligan", "Professor")) + 
+  facet_wrap(~COUNTRY)
+
+
+
+
+
+```
+
+
+
+### Task 9: Descriptives
+
+```{r TR909}
+
+
+
+descriptives <- combined_data_rdc %>%
+  group_by(COUNTRY, CODED) %>% 
+  summarise(N_CORRECT = n(), MEAN_CORRECT = mean(CORRECT_PCT), SD_CORRECT = sd(CORRECT_PCT))
+
+
+
+```
+
+
+
+### Task 10: t-test
+
+```{r TR910}
+
+
+ttest_can <- filter(combined_data_rdc, COUNTRY == "CANADA")  %>% t.test(CORRECT_PCT ~ CODED, data = ., var.equal = FALSE, alternative = "two.sided") %>%
+tidy()%>%
+mutate(d = (2*statistic)/sqrt(parameter))
+
+
+```
+
+
+
+### Task 11: The Final Interpretation
+
+```{r TR911}
+
+
+answer_TR911 <- 2
+
+
+```
+
+# Finished
+
+Well done, you are finished. Now it would be an excellent idea to save your code, close RStudio and R, reopen RStudio and R, reopen your code, and then knit your code one last time to HTML. If there are no errors in your coding then your code should produce an HTML output with all your answers in place. If any errors appear you should try and rectify them before submitting the .Rmd file. Remember this does not mean that your answers are correct, it just means that you have code that runs. Remember to submit your assignment through Moodle in the format of `GUID_PSYCH5080_DataSkills2.Rmd` by the deadline, however do read below as some final checks.
+
+**Make sure that before you submit that :**
+
+1. All the code chunks are named as they were in the original file, TR901 to TR911. All code chunks start and end correctly with backticks.
+2. That all variables, tibbles, objects, columns, etc are named as they were originally given or asked to be named. Check spelling, e.g. `answers` is not the same as `anwser` nor `answer` and only one will be considered correct regardless of what was meant. Be reproducible!
+3. That when you knit the file as an HTML, a webpage is produced and that the code does not crash due to an error.
+4. That you are submitting the file as an .Rmd file and nothing else.
+5. That the file you want to submit is the file you are about to submit as we can not return files for a second chance of submission.

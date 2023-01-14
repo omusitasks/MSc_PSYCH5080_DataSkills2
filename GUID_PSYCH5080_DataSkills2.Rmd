@@ -1,0 +1,183 @@
+---
+title: "PSYCH5080 Data Skills Assignment 2"
+author: "School of Psychology and Neuroscience"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+## DO NOT DELETE THIS CHUNK OR ALTER ANY OF THE LINES WITHIN THIS CHUNK!
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+# Start of the Assignment 
+
+
+### Task 1: Load the Libraries
+
+```{r TR901, message = FALSE, warning = FALSE}
+
+
+
+
+
+```
+
+
+
+### Task 2: The Data
+
+```{r TR902, message = FALSE, warning = FALSE}
+
+
+
+dat_can <- NULL
+
+dat_uk <- NULL
+
+
+
+```
+
+
+
+### Task 3: Wrangling 1
+
+```{r TR903}
+
+
+
+dat_can_rdc <- NULL
+
+
+
+```
+
+
+
+### Task 4 - Creating Factors
+
+```{r TR904}
+
+
+
+dat_can_mut <- NULL
+
+
+
+```
+
+
+
+### Task 5 - The UK Dataset
+
+```{r TR905}
+
+
+
+dat_uk_mut <- NULL
+
+
+
+```
+
+
+
+### Task 6: Combine the data
+
+```{r TR906}
+
+
+
+combined_data <- NULL
+
+
+
+
+```
+
+
+
+### Task 7 - Selecting columns
+
+```{r TR907}
+
+
+
+combined_data_rdc <- NULL
+
+
+
+```
+
+
+
+### Task 8 - Visualisation
+
+```{r TR908}
+
+
+
+
+
+
+
+
+```
+
+
+
+### Task 9: Descriptives
+
+```{r TR909}
+
+
+
+descriptives <- NULL
+
+
+
+```
+
+
+
+### Task 10: t-test
+
+```{r TR910}
+
+
+
+ttest_can <- NULL
+
+
+
+```
+
+
+
+### Task 11: The Final Interpretation
+
+```{r TR911}
+
+
+
+answer_TR911 <- 1
+answer_TR911 <- 2 
+answer_TR911 <- 3
+answer_TR911 <- 4
+answer_TR911 <- 999
+
+
+
+```
+
+# Finished
+
+Well done, you are finished. Now it would be an excellent idea to save your code, close RStudio and R, reopen RStudio and R, reopen your code, and then knit your code one last time to HTML. If there are no errors in your coding then your code should produce an HTML output with all your answers in place. If any errors appear you should try and rectify them before submitting the .Rmd file. Remember this does not mean that your answers are correct, it just means that you have code that runs. Remember to submit your assignment through Moodle in the format of `GUID_PSYCH5080_DataSkills2.Rmd` by the deadline, however do read below as some final checks.
+
+**Make sure that before you submit that :**
+
+1. All the code chunks are named as they were in the original file, TR901 to TR911. All code chunks start and end correctly with backticks.
+2. That all variables, tibbles, objects, columns, etc are named as they were originally given or asked to be named. Check spelling, e.g. `answers` is not the same as `anwser` nor `answer` and only one will be considered correct regardless of what was meant. Be reproducible!
+3. That when you knit the file as an HTML, a webpage is produced and that the code does not crash due to an error.
+4. That you are submitting the file as an .Rmd file and nothing else.
+5. That the file you want to submit is the file you are about to submit as we can not return files for a second chance of submission.
